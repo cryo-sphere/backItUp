@@ -1,12 +1,12 @@
 {
-	"name": "template",
+	"name": "backitup",
 	"version": "1.0.0",
-	"description": "A quick and easy to use template for TypeScript like projects ✏️",
+	"description": "Protect what's vulnerable. 🔐",
 	"author": "ijsKoud <github@ijskoud.dev>",
 	"license": "MIT",
 	"type": "module",
 	"main": "dist/index.js",
-	"homepage": "https://github.com/ijsKoud/project-template",
+	"homepage": "https://github.com/cryo-sphere/backItUp",
 	"scripts": {
 		"build": "tsc --build",
 		"build:watch": "tsc --watch",
