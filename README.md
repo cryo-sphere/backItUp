@@ -1,8 +1,8 @@
 <div align="center">
-    <img src="https://ijskoud.dev/assets/svg/logo.svg" width="100px" />
-    <h1>project-template</h1>
+    <img src="https://raw.githubusercontent.com/cryo-sphere/.github/main/logo.png" width="100px" />
+    <h1>backItUp</h1>
   
-  <p>A quick and easy to use template for TypeScript like projects ✏️</p>
+  <p>Protect what's vulnerable. 🔐</p>
   
   <p align="center">
     <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg" />
@@ -11,8 +11,8 @@
     </a>
   </p>
 
-  <a href="https://ijskoud.dev/discord" target="_blank">
-    <img src="https://ijskoud.dev/discord/banner" />
+  <a href="https://discord.gg/46v9tr3Wxp" target="_blank">
+    <img src="https://discord.com/api/guilds/743145077206941747/embed.png?style=banner2" />
   </a>
 </div>
 
@@ -20,7 +20,7 @@
 
 ## Information
 
-Just a template, like an uncolored drawing. That's all. ✏️
+Protect what's vulnerable. 🔐
 
 ## Install
 
@@ -32,10 +32,10 @@ To use this template, you will need the following: `yarn` and `node >= 18.12.1`.
 
 👤 **ijsKoud**
 
--   Website: https://ijskoud.dev/
--   Email: <hi@ijskoud.dev>
--   Twitter: [@ijsKoud](https://ijskoud.dev/twitter)
--   Github: [@ijsKoud](https://github.com/ijsKoud)
+- Website: https://ijskoud.dev/
+- Email: <hi@ijskoud.dev>
+- Twitter: [@ijsKoud](https://ijskoud.dev/twitter)
+- Github: [@ijsKoud](https://github.com/ijsKoud)
 
 ## Donate
 
