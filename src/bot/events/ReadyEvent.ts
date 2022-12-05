@@ -7,6 +7,6 @@ import { bold } from "colorette";
 })
 export default class extends EventListener {
 	public override run() {
-		this.client.logger.info(`${bold(this.client.user!.tag)} is uo and running.`);
+		this.client.logger.info(`${bold(this.client.user!.tag)} is up and running.`);
 	}
 }
