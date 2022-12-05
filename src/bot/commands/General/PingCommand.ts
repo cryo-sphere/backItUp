@@ -9,9 +9,9 @@ import ms from "ms";
 export default class extends Command {
 	public override async run(interaction: CommandInteraction) {
 		const msg = await interaction.reply({ content: `Pinging...`, fetchReply: true });
-		const roundtrip = ms(Date.now() - msg.createdAt.getTime());
+		const roundtrip = Date.now() - msg.createdAt.getTime();
 		const ping = ms(this.client.ws.ping);
 
-		await interaction.editReply(`Pong! Roundtrip took: \`${roundtrip}\`, overall ping: ${ping}`);
+		await interaction.editReply(`Ping, Pong!\nRoundtrip took: \`${roundtrip}ms\`\n+/- websocket ping: \`${ping}\``);
 	}
 }
