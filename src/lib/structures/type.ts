@@ -91,3 +91,11 @@ export interface BackUpSticker {
 }
 
 export type ImageHash = string;
+
+export interface BackItUpSettings {
+	backUpTime: number; // min 4 hours, max 1 week (premium: starting at every hour)
+	backUpHistory: number; // default = 2 days, premium: 7 days, 31 days
+	backUpAmount: number; // max 16 for default, premium = unlimited
+	manualTriggerAmount: number; // default 2, premium 4 (all per day)
+	backUpIds: string[];
+}
