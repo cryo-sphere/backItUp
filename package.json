@@ -13,7 +13,8 @@
 		"start:dev": "NODE_ENV=development nodemon ./dist",
 		"start": "node ./dist",
 		"lint": "eslint src",
-		"postinstall": "is-ci || husky install"
+		"postinstall": "is-ci || husky install",
+		"prisma": "dotenv -e data/.env -- prisma"
 	},
 	"dependencies": {
 		"@prisma/client": "^4.7.1",
@@ -35,6 +36,7 @@
 		"@types/node": "^18.11.13",
 		"@typescript-eslint/eslint-plugin": "^5.46.0",
 		"@typescript-eslint/parser": "^5.46.0",
+		"dotenv-cli": "^6.0.0",
 		"eslint": "^8.29.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.2.1",
