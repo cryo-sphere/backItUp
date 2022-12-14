@@ -3,9 +3,7 @@ import type BackItUpClient from "../Client.js";
 
 export default class BackUp {
 	public guild!: Guild;
-	public constructor(public client: BackItUpClient, public data: BackUpData) {
-		this.guild;
-	}
+	public constructor(public client: BackItUpClient, public data: BackUpData) {}
 
 	public load(): boolean {
 		const guild = this.data.guild.id
@@ -16,17 +14,21 @@ export default class BackUp {
 		this.guild = guild;
 		return true;
 	}
+
+	public static parse(client: BackItUpClient, data: any) {
+		return new BackUp(client, data);
+	}
 }
 
 interface BackUpData {
 	guild: BackUpGuild;
 	widget: BackUpWidget;
 
-	roles: BackUpRole[];
-	bans: BackUpBan[];
-
 	// automod stuff
 	// community stuff
+
+	roles: BackUpRole[];
+	bans: BackUpBan[];
 
 	emojis: BackUpEmoji[];
 	stickers: BackUpSticker[];
@@ -34,10 +36,11 @@ interface BackUpData {
 
 interface BackUpGuild {
 	name: string;
-	id?: string;
-	icon: unknown; // todo: image type
+	guildId?: string;
+	id: string; // secret identifier for retrieving data from from other server (only )
+	icon: ImageHash;
 	inactive: {
-		channel: string;
+		channel?: string;
 		timeout: number;
 	};
 	system: {
@@ -48,8 +51,8 @@ interface BackUpGuild {
 		tips: boolean;
 	};
 	nitroProgress: boolean;
-	inviteBackground?: unknown; // todo image type
-	banner?: unknown; // todo: image type
+	inviteBackground?: ImageHash; // todo image type
+	banner?: ImageHash;
 }
 
 interface BackUpWidget {
@@ -59,15 +62,16 @@ interface BackUpWidget {
 
 interface BackUpRole {
 	name: string;
+	id?: string;
 	postion: number;
 
-	icon?: unknown; // todo: image type
+	icon?: ImageHash;
 	color: string;
 
 	mention: boolean;
 	display: boolean;
 
-	permissions: string;
+	permissions: bigint;
 	members: string[];
 }
 
@@ -78,12 +82,14 @@ interface BackUpBan {
 
 interface BackUpEmoji {
 	name: string;
-	image: unknown; // todo: image type
+	image: ImageHash;
 }
 
 interface BackUpSticker {
 	name: string;
 	emoji: string;
 	description?: string;
-	image: unknown; // todo: image type
+	image: ImageHash;
 }
+
+type ImageHash = string;
