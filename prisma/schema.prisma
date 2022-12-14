@@ -12,7 +12,9 @@ datasource db {
 }
 
 model BackUp {
-  backUpId  String   @id @map("backup_id")
+  backUpId String @id @map("backup_id")
+  secret   String @map("backup_secret")
+
   createdAt DateTime @default(now()) @map("backup_creation_date")
 
   guildName String  @map("guild_name")
