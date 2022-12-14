@@ -32,7 +32,7 @@ model BackUp {
 
   nitroProgressEnabled Boolean @map("nitro_progress_enabled")
   inviteBackground     String? @map("invite_banner") // imageHash
-  guildBbanner         String? @map("guild_banner") // imageHash
+  guildBanner          String? @map("guild_banner") // imageHash
 
   widgetEnabled     Boolean @map("widget_enabled")
   widgetChannelName String? @map("widget_channel_name")
