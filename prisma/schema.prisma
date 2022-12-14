@@ -1,0 +1,104 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model BackUp {
+  backUpId String @id @map("backup_id")
+  secret   String @map("backup_secret")
+
+  createdAt DateTime @default(now()) @map("backup_creation_date")
+
+  guildName String  @map("guild_name")
+  guildId   String? @map("guild_id")
+  guildIcon String? @map("guild_icon") // guildIconHash
+
+  inactiveChannelId   String? @map("inactive_channel_id")
+  inactiveChannelName String? @map("inactive_channel_name") // fallback for when data is imported from one server to another or when channel is deleted
+  inactiveTimeout     Int     @map("inactive_timeout")
+
+  systemChannelName   String? @map("system_channel_name")
+  systemChannelId     String? @map("system_channel_id")
+  systemEnableJoin    Boolean @map("system_enable_join")
+  systemEnableSticker Boolean @map("system_enable_sticker")
+  systemEnableBoost   Boolean @map("system_enable_boost")
+  systemEnableTips    Boolean @map("system_enable_tips")
+
+  nitroProgressEnabled Boolean @map("nitro_progress_enabled")
+  inviteBackground     String? @map("invite_banner") // imageHash
+  guildBanner          String? @map("guild_banner") // imageHash
+
+  widgetEnabled     Boolean @map("widget_enabled")
+  widgetChannelName String? @map("widget_channel_name")
+  widgetChannelId   String? @map("widget_channel_id") // Both can be undefined if no invite is chosen
+
+  roles    BackUpRole[]
+  bans     BackUpBan[]
+  emojis   BackUpEmoji[]
+  stickers BackUpSticker[]
+  // TODO: Add Automod & Community data fields
+
+  @@map("guild_backup")
+}
+
+model BackUpRole {
+  backUpId String @id @map("backup_id")
+
+  id       String? @map("role_id")
+  name     String  @map("role_name")
+  position Int     @map("role_position")
+
+  icon  String @map("role_icon") // imageHash
+  color String @map("role_color")
+
+  mentionEveryone Boolean @map("role_mention_everyone")
+  displaySeparate Boolean @map("role_display_separate")
+
+  permissions BigInt   @map("role_permissions")
+  members     String[] @map("role_members") // list of members with the role (ID)
+
+  BackUp         BackUp? @relation(fields: [backUpBackUpId], references: [backUpId])
+  backUpBackUpId String?
+}
+
+model BackUpBan {
+  backUpId String @id @map("backup_id")
+
+  userId String @map("ban_user_id")
+  reason String @map("ban_reason")
+
+  BackUp         BackUp? @relation(fields: [backUpBackUpId], references: [backUpId])
+  backUpBackUpId String?
+}
+
+model BackUpEmoji {
+  backUpId String @id @map("backup_id")
+
+  name  String @map("emoji_id")
+  emoji String @map("emoji_hash")
+
+  BackUp         BackUp? @relation(fields: [backUpBackUpId], references: [backUpId])
+  backUpBackUpId String?
+}
+
+model BackUpSticker {
+  backUpId String @id @map("backup_id")
+
+  id   String? @map("sticker_id")
+  name String  @map("sticker_name")
+
+  emoji       String @map("sticker_related_emoji")
+  description String @map("sticker_description")
+  sticker     String @map("sticker_hash")
+
+  BackUp         BackUp? @relation(fields: [backUpBackUpId], references: [backUpId])
+  backUpBackUpId String?
+}
